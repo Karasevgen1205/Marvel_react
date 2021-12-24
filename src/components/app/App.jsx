@@ -5,6 +5,7 @@ import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 import ErrorBoundary from "../errorBoundary/ErrorBoundary";
+import Game from "../game/Game";
 
 import decoration from "../../resources/img/vision.png";
 import "./app.scss";
@@ -23,6 +24,7 @@ class App extends Component {
 			// <Router>
 			<div className="app">
 				<div className="container">
+					<Game />
 					{/* <nav>
 							<ul>
 								<li>
