@@ -1,80 +1,29 @@
 import { Component } from "react";
-// import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import AppHeader from "../appHeader/AppHeader";
-import RandomChar from "../randomChar/RandomChar";
-import CharList from "../charList/CharList";
-import CharInfo from "../charInfo/CharInfo";
-import ErrorBoundary from "../errorBoundary/ErrorBoundary";
-import Game from "../game/Game";
-
-import decoration from "../../resources/img/vision.png";
+import Header from "../header/Header";
+import Game from "../appGame/game/Game";
+import AppMarvel from "../appMarvel/AppMarvel";
+import AppEmployeesList from "../appEmployeesList/appEmployeesList/AppEmployeesList";
 import "./app.scss";
 
 class App extends Component {
-	state = {
-		selectedChar: null,
-	};
+  state = {
+    route: "marvel",
+  };
 
-	onCharSelected = (id) => {
-		this.setState({ selectedChar: id });
-	};
+  onChangeRoute = (route) => {
+    this.setState({ route });
+  };
 
-	render() {
-		return (
-			// <Router>
-			<div className="app">
-				<div className="container">
-					<Game />
-					{/* <nav>
-							<ul>
-								<li>
-									<Link to="/">Home</Link>
-								</li>
-								<li>
-									<Link to="/login">login</Link>
-								</li>
-								<li>
-									<Link to="/recovery-passwor">recovery-passwor</Link>
-								</li>
-							</ul>
-						</nav> */}
-					{/* <Routes>
-							<Route exact path="/" element={<h1>Home</h1>} />
-							<Route
-								exact
-								path="/login"
-								element={
-									<ErrorBoundary>
-										<CharInfo charId={this.state.selectedChar} />
-									</ErrorBoundary>
-								}
-							/>
-							<Route
-								exact
-								path="/recovery-password"
-								element={<h1>recovery-password</h1>}
-							/>
-						</Routes> */}
-					<ErrorBoundary>
-						<AppHeader />
-					</ErrorBoundary>
-					<main>
-						<RandomChar />
-						<div className="char__content">
-							<ErrorBoundary>
-								<CharList onCharSelected={this.onCharSelected} />
-							</ErrorBoundary>
-							<ErrorBoundary>
-								<CharInfo charId={this.state.selectedChar} />
-							</ErrorBoundary>
-						</div>
-						<img className="bg-decoration" src={decoration} alt="vision" />
-					</main>
-				</div>
-			</div>
-			// </Router>
-		);
-	}
+  render() {
+    return (
+      <div className="app">
+        <Header onChangeRoute={this.onChangeRoute} />
+        {this.state.route === "ticTacToe" ? <Game /> : null}
+        {this.state.route === "marvel" ? <AppMarvel /> : null}
+        {this.state.route === "employeesList" ? <AppEmployeesList /> : null}
+      </div>
+    );
+  }
 }
 
 export default App;
