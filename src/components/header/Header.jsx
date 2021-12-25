@@ -1,7 +1,9 @@
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+
 import logo from "../../resources/img/Avengers_logo.png";
 import "./header.scss";
 
-const Header = ({ onChangeRoute }) => {
+const Header = () => {
   return (
     <header className="header">
       <div className="container">
@@ -12,37 +14,46 @@ const Header = ({ onChangeRoute }) => {
           <nav className="header__nav">
             <ul className="header__list">
               <li className="header__item">
-                <a
-                  href="#"
-                  className="header__link"
-                  onClick={() => {
-                    onChangeRoute("marvel");
-                  }}
-                >
+                <Link to="/marvel" className="header__link">
                   Marvel
-                </a>
+                </Link>
+                {/* <a
+                    href="#"
+                    className="header__link"
+                    onClick={() => {
+                      onChangeRoute("marvel");
+                    }}
+                  >
+                    Marvel
+                  </a> */}
               </li>
               <li className="header__item">
-                <a
-                  href="#"
-                  className="header__link"
-                  onClick={() => {
-                    onChangeRoute("ticTacToe");
-                  }}
-                >
+                {/* <a
+                    href="#"
+                    className="header__link"
+                    onClick={() => {
+                      onChangeRoute("ticTacToe");
+                    }}
+                  >
+                    Tic tac toe
+                  </a> */}
+                <Link to="/tic-tac-toe" className="header__link">
                   Tic tac toe
-                </a>
+                </Link>
               </li>
               <li className="header__item">
-                <a
-                  href="#"
-                  className="header__link"
-                  onClick={() => {
-                    onChangeRoute("employeesList");
-                  }}
-                >
+                {/* <a
+                    href="#"
+                    className="header__link"
+                    onClick={() => {
+                      onChangeRoute("employeesList");
+                    }}
+                  >
+                    Employees list
+                  </a> */}
+                <Link to="/employees-list" className="header__link">
                   Employees list
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
