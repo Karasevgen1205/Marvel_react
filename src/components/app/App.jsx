@@ -8,36 +8,41 @@ import AppEmployeesList from "../appEmployeesList/appEmployeesList/AppEmployeesL
 import "./app.scss";
 
 class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="all-works">
-          <Header />
-          <div className="app">
-            <Routes>
-              <Route exact path="/tic-tac-toe" element={<Game />} />
-              <Route exact path="/marvel" element={<AppMarvel />} />
-              <Route
-                exact
-                path="/employees-list"
-                element={<AppEmployeesList />}
-              />
-            </Routes>
-          </div>
-          <Footer />
-        </div>
-      </Router>
-      // <div className="all-works">
-      //   <Header onChangeRoute={this.onChangeRoute} />
-      //   <div className="app">
-      //     {this.state.route === "ticTacToe" ? <Game /> : null}
-      //     {this.state.route === "marvel" ? <AppMarvel /> : null}
-      //     {this.state.route === "employeesList" ? <AppEmployeesList /> : null}
-      //   </div>
-      //   <Footer />
-      // </div>
-    );
-  }
+	render() {
+		return (
+			<Router>
+				<div className="all-works">
+					<Header />
+					<div className="app">
+						<Routes>
+							<Route exact path="/tic-tac-toe" element={<Game />} />
+							<Route exact path="/marvel" element={<AppMarvel />} />
+							<Route
+								exact
+								path="/employees-list"
+								element={<AppEmployeesList />}
+							/>
+						</Routes>
+					</div>
+					<Footer />
+				</div>
+			</Router>
+		);
+	}
 }
 
 export default App;
+
+// 4. Существует страница на домене domain.one, на которой загружается iframe с
+// другого домена - domain.two. Нужно на странице domain.one использовать скрипт для
+// записи/чтения/удаления данных из localStorage домена domain.two. При этом оба
+// домена под нашим управлением, то есть, мы можем изменять файлы и там, и там, как
+// нам удобно.
+// Задача: написать реализацию методов для чтения/записи/удаления данных из
+// доступного localStorage другого домена. Пусть при успешном чтении данные
+// выводятся в консоль, а при успешной записи/удалении в консоль отправляется лог
+// вроде “written” или “removed”.
+// 5. Для работы с кросс-доменным localStorage понадобилось не только
+// чтение/запись/удаление данных из него, но и их дополнительная обработка.
+// Задача: добавить в решение задачи 4 возможность передать callback и вызвать его на
+// domain.one после выполнения операции чтения/записи/удаления
