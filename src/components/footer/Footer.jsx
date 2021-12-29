@@ -1,7 +1,7 @@
 import rabota from "../../resources/img/rabota.svg";
 import smartr from "../../resources/img/smartr.svg";
 import linkedin from "../../resources/img/linkedin.svg";
-import github from "../../resources/img/github.png";
+import github from "../../resources/img/github.svg";
 import "./footer.scss";
 
 const Footer = () => {

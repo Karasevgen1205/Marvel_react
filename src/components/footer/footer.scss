@@ -1,5 +1,6 @@
 @import "../../style/config/colors.scss";
 @import "../../style/config/typography.scss";
+@import "../../style/config/media.scss";
 
 .footer {
 	width: 100%;
@@ -63,6 +64,36 @@
 
 		h1 {
 			margin-top: 100px;
+		}
+	}
+}
+
+@media (max-width: $lg) {
+	.footer {
+		&__email {
+			text-align: center;
+
+			a {
+				font-size: 25px;
+				line-height: 36px;
+			}
+		}
+
+		&__links {
+			flex-direction: column;
+		}
+
+		&__item {
+			margin-right: 0;
+			margin-bottom: 20px;
+		}
+
+		&__title {
+			text-align: center;
+
+			h1 {
+				margin-top: 100px;
+			}
 		}
 	}
 }
