@@ -8,118 +8,118 @@ import EmployeesAddForm from "../employeesAddForm/EmployeesAddForm";
 import "./appEmployeesList.scss";
 
 class AppEmployeesList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [
-        { name: "John C.", salary: 800, increase: false, like: false, id: 1 },
-        { name: "Alex M.", salary: 3000, increase: true, like: false, id: 2 },
-        { name: "Carl W.", salary: 5000, increase: false, like: false, id: 3 },
-      ],
-      filter: "",
-      category: "all",
-    };
-    this.maxItemId = 3;
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			data: [
+				{ name: "John C.", salary: 800, increase: false, like: false, id: 1 },
+				{ name: "Alex M.", salary: 3000, increase: true, like: false, id: 2 },
+				{ name: "Carl W.", salary: 5000, increase: false, like: false, id: 3 },
+			],
+			filter: "",
+			category: "all",
+		};
+		this.maxItemId = 3;
+	}
 
-  onDeleteItem = (id) => {
-    this.setState(({ data }) => {
-      return { data: data.filter((item) => item.id !== id) };
-    });
-  };
+	onDeleteItem = (id) => {
+		this.setState(({ data }) => {
+			return { data: data.filter((item) => item.id !== id) };
+		});
+	};
 
-  onAddItem = (e, input) => {
-    e.preventDefault();
-    if (input.name && input.salary) {
-      const newId = this.state.data.length + 1;
-      const newItem = { ...input, increase: false, like: false, id: newId };
-      this.setState(({ data }) => {
-        return { data: [...data, newItem] };
-      });
-      this.maxItemId = ++this.maxItemId;
-    }
-  };
+	onAddItem = (e, input) => {
+		e.preventDefault();
+		if (input.name && input.salary) {
+			const newId = this.state.data.length + 1;
+			const newItem = { ...input, increase: false, like: false, id: newId };
+			this.setState(({ data }) => {
+				return { data: [...data, newItem] };
+			});
+			this.maxItemId = ++this.maxItemId;
+		}
+	};
 
-  onChangeProp = (id, prop) => {
-    this.setState(({ data }) => {
-      return {
-        data: data.map((item) => {
-          if (item.id === id) {
-            const newItem = { ...item, [prop]: !item[prop] };
-            return newItem;
-          }
+	onChangeProp = (id, prop) => {
+		this.setState(({ data }) => {
+			return {
+				data: data.map((item) => {
+					if (item.id === id) {
+						const newItem = { ...item, [prop]: !item[prop] };
+						return newItem;
+					}
 
-          return item;
-        }),
-      };
-    });
-  };
+					return item;
+				}),
+			};
+		});
+	};
 
-  onChangeFilter = (filter) => {
-    this.setState(() => {
-      return { filter };
-    });
-  };
+	onChangeFilter = (filter) => {
+		this.setState(() => {
+			return { filter };
+		});
+	};
 
-  filteredData = (items, filter) => {
-    if (filter.length === 0) {
-      return items;
-    }
-    const newData = items.filter((item) => {
-      if (item.name.indexOf(filter) > -1) {
-        return item;
-      }
-    });
+	filteredData = (items, filter) => {
+		if (filter.length === 0) {
+			return items;
+		}
+		const newData = items.filter((item) => {
+			if (item.name.indexOf(filter) > -1) {
+				return item;
+			}
+		});
 
-    return newData;
-  };
+		return newData;
+	};
 
-  onChangeBtn = (category) => {
-    this.setState({ category });
-  };
+	onChangeBtn = (category) => {
+		this.setState({ category });
+	};
 
-  filteredCategory = (items, category) => {
-    switch (category) {
-      case "all":
-        return items;
-      case "increase":
-        return items.filter((item) => {
-          return item.increase;
-        });
-      case "moreThen1000":
-        return items.filter((item) => {
-          return item.salary > 1000;
-        });
-      default:
-        return items;
-    }
-  };
+	filteredCategory = (items, category) => {
+		switch (category) {
+			case "all":
+				return items;
+			case "increase":
+				return items.filter((item) => {
+					return item.increase;
+				});
+			case "moreThen1000":
+				return items.filter((item) => {
+					return item.salary > 1000;
+				});
+			default:
+				return items;
+		}
+	};
 
-  render() {
-    const { data, filter, category } = this.state;
-    const employees = data.length;
-    const increase = data.filter((item) => item.increase).length;
-    return (
-      <div className="app-employees-list">
-        <AppInfo employees={employees} increase={increase} />
+	render() {
+		const { data, filter, category } = this.state;
+		const employees = data.length;
+		const increase = data.filter((item) => item.increase).length;
+		return (
+			<section className="app-employees-list">
+				<AppInfo employees={employees} increase={increase} />
 
-        <div className="search-panel">
-          <SearchPanel onChangeFilter={this.onChangeFilter} />
-          <AppFilter category={category} onChangeBtn={this.onChangeBtn} />
-        </div>
+				<div className="search-panel">
+					<SearchPanel onChangeFilter={this.onChangeFilter} />
+					<AppFilter category={category} onChangeBtn={this.onChangeBtn} />
+				</div>
 
-        <EmployeesList
-          data={this.filteredCategory(
-            this.filteredData(data, filter),
-            category
-          )}
-          onDeleteItem={this.onDeleteItem}
-          onChangeProp={this.onChangeProp}
-        />
-        <EmployeesAddForm onAddItem={this.onAddItem} />
-      </div>
-    );
-  }
+				<EmployeesList
+					data={this.filteredCategory(
+						this.filteredData(data, filter),
+						category
+					)}
+					onDeleteItem={this.onDeleteItem}
+					onChangeProp={this.onChangeProp}
+				/>
+				<EmployeesAddForm onAddItem={this.onAddItem} />
+			</section>
+		);
+	}
 }
 
 export default AppEmployeesList;

@@ -19,23 +19,21 @@ class AppMarvel extends Component {
 
 	render() {
 		return (
-			<div className="container">
+			<>
 				<ErrorBoundary>
 					<AppHeader />
 				</ErrorBoundary>
-				<main>
-					<RandomChar />
-					<div className="char__content">
-						<ErrorBoundary>
-							<CharList onCharSelected={this.onCharSelected} />
-						</ErrorBoundary>
-						<ErrorBoundary>
-							<CharInfo charId={this.state.selectedChar} />
-						</ErrorBoundary>
-					</div>
-					<img className="bg-decoration" src={decoration} alt="vision" />
-				</main>
-			</div>
+				<RandomChar />
+				<div className="char__content">
+					<ErrorBoundary>
+						<CharList onCharSelected={this.onCharSelected} />
+					</ErrorBoundary>
+					<ErrorBoundary>
+						<CharInfo charId={this.state.selectedChar} />
+					</ErrorBoundary>
+				</div>
+				<img className="bg-decoration" src={decoration} alt="vision" />
+			</>
 		);
 	}
 }

@@ -17,7 +17,6 @@ class RandomChar extends Component {
 
 	componentDidMount() {
 		this.updateChar();
-		// this.timerId = setInterval(this.updateChar, 15000);
 	}
 
 	componentWillUnmount() {
@@ -62,23 +61,38 @@ class RandomChar extends Component {
 		const content = !(loading || error) ? <View char={char} /> : null;
 
 		return (
-			<div className="randomchar">
-				{errorMessage}
-				{spinner}
-				{content}
-				<div className="randomchar__static">
-					<p className="randomchar__title">
-						Random character for today!
-						<br />
-						Do you want to get to know him better?
-					</p>
-					<p className="randomchar__title">Or choose another one</p>
-					<button onClick={this.updateChar} className="button button__main">
-						<div className="inner">try it</div>
-					</button>
-					<img src={mjolnir} alt="mjolnir" className="randomchar__decoration" />
+			<section className="randomchar">
+				<div className="container">
+					<div className="row">
+						<div className="col-12 col-lg-6">
+							{errorMessage}
+							{spinner}
+							{content}
+						</div>
+						<div className="col-12 col-lg-6">
+							<div className="randomchar__static">
+								<p className="randomchar__title">
+									Random character for today!
+									<br />
+									Do you want to get to know him better?
+								</p>
+								<p className="randomchar__title">Or choose another one</p>
+								<button
+									onClick={this.updateChar}
+									className="button button__main"
+								>
+									<div className="inner">try it</div>
+								</button>
+								<img
+									src={mjolnir}
+									alt="mjolnir"
+									className="randomchar__decoration"
+								/>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
+			</section>
 		);
 	}
 }
