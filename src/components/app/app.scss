@@ -1,12 +1,13 @@
 .app {
-  position: relative;
-  width: 100%;
-  padding: 100px 0;
+	position: relative;
+	width: 100%;
+	margin-bottom: 100px;
+	padding-top: 100px;
 
-  .bg-decoration {
-    position: absolute;
-    right: 0;
-    bottom: -70px;
-    z-index: -1;
-  }
+	.bg-decoration {
+		position: absolute;
+		right: 0;
+		bottom: -70px;
+		z-index: -1;
+	}
 }
