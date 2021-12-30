@@ -24,15 +24,28 @@ class AppMarvel extends Component {
 					<AppHeader />
 				</ErrorBoundary>
 				<RandomChar />
-				<div className="char__content">
-					<ErrorBoundary>
-						<CharList onCharSelected={this.onCharSelected} />
-					</ErrorBoundary>
-					<ErrorBoundary>
-						<CharInfo charId={this.state.selectedChar} />
-					</ErrorBoundary>
-				</div>
-				<img className="bg-decoration" src={decoration} alt="vision" />
+				<section className="char-content">
+					<div className="container">
+						<div className="row">
+							<div className="col-12">
+								{/* make a mobile adaptation */}
+								<div className="char__content">
+									<ErrorBoundary>
+										<CharList onCharSelected={this.onCharSelected} />
+									</ErrorBoundary>
+									<ErrorBoundary>
+										<CharInfo charId={this.state.selectedChar} />
+									</ErrorBoundary>
+									<img
+										className="bg-decoration"
+										src={decoration}
+										alt="vision"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
 			</>
 		);
 	}

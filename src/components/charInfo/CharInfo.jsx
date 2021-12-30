@@ -105,15 +105,15 @@ const View = ({ char }) => {
 					</div>
 				</div>
 			</div>
-			<div className="char__descr">{description}</div>
-			<div className="char__comics">Comics:</div>
+			<p className="char__descr">{description}</p>
+			<p className="char__comics">Comics:</p>
 			<ul className="char__comics-list">
 				{comics.length === 0 ? "There are no comics here" : null}
 				{comics.map((item, i) => {
 					if (i < 10) {
 						return (
 							<li className="char__comics-item" key={i}>
-								{item.name}
+								<p>{item.name}</p>
 							</li>
 						);
 					}
