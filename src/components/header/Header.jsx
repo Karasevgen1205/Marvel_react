@@ -9,6 +9,9 @@ const Header = () => {
 	const onToggle = (e) => {
 		e.preventDefault();
 		setActive(!active);
+		active
+			? (document.body.style.overflow = "scroll")
+			: (document.body.style.overflow = "hidden");
 	};
 
 	return (
