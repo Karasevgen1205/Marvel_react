@@ -8,19 +8,16 @@ import EmployeesAddForm from "../employeesAddForm/EmployeesAddForm";
 import "./appEmployeesList.scss";
 
 class AppEmployeesList extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			data: [
-				{ name: "John C.", salary: 800, increase: false, like: false, id: 1 },
-				{ name: "Alex M.", salary: 3000, increase: true, like: false, id: 2 },
-				{ name: "Carl W.", salary: 5000, increase: false, like: false, id: 3 },
-			],
-			filter: "",
-			category: "all",
-		};
-		this.maxItemId = 3;
-	}
+	state = {
+		data: [
+			{ name: "John C.", salary: 800, increase: false, like: false, id: 1 },
+			{ name: "Alex M.", salary: 3000, increase: true, like: false, id: 2 },
+			{ name: "Carl W.", salary: 5000, increase: false, like: false, id: 3 },
+		],
+		filter: "",
+		category: "all",
+	};
+	maxItemId = 3;
 
 	onDeleteItem = (id) => {
 		this.setState(({ data }) => {
@@ -65,11 +62,7 @@ class AppEmployeesList extends Component {
 		if (filter.length === 0) {
 			return items;
 		}
-		const newData = items.filter((item) => {
-			if (item.name.indexOf(filter) > -1) {
-				return item;
-			}
-		});
+		const newData = items.filter((item) => item.name.indexOf(filter) > -1);
 
 		return newData;
 	};
@@ -102,12 +95,10 @@ class AppEmployeesList extends Component {
 		return (
 			<section className="app-employees-list">
 				<AppInfo employees={employees} increase={increase} />
-
 				<div className="search-panel">
 					<SearchPanel onChangeFilter={this.onChangeFilter} />
 					<AppFilter category={category} onChangeBtn={this.onChangeBtn} />
 				</div>
-
 				<EmployeesList
 					data={this.filteredCategory(
 						this.filteredData(data, filter),
