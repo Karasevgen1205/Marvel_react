@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./info.scss";
 
 const Info = ({ status, moves }) => {
@@ -7,6 +8,16 @@ const Info = ({ status, moves }) => {
 			<ul className="info__list">{moves}</ul>
 		</div>
 	);
+};
+
+Info.defaultProps = {
+	status: "",
+	moves: [],
+};
+
+Info.propTypes = {
+	status: PropTypes.string,
+	moves: PropTypes.array,
 };
 
 export default Info;
