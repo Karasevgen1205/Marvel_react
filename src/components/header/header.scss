@@ -73,30 +73,32 @@
 		$self: &;
 
 		&__nav {
-			display: none;
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			top: 0;
+			left: 100%;
+			width: 100%;
+			height: 100vh;
+			background-color: $transparent-green;
+			transition: left 0.3s linear;
+
+			#{$self} {
+				&__list {
+					flex-direction: column;
+				}
+
+				&__item {
+					display: flex;
+					justify-content: center;
+					margin-right: 0;
+				}
+			}
 
 			&_active {
 				position: fixed;
-				top: 0;
 				left: 0;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				width: 100%;
-				height: 100vh;
-				background-color: $transparent-green;
-
-				#{$self} {
-					&__list {
-						flex-direction: column;
-					}
-
-					&__item {
-						display: flex;
-						justify-content: center;
-						margin-right: 0;
-					}
-				}
 			}
 		}
 

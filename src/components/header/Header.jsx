@@ -24,7 +24,7 @@ const Header = () => {
 							onToggle(e);
 						}}
 					>
-						<div className={`header__hamburger ${active ? "active" : null}`}>
+						<div className={`header__hamburger ${active ? "active" : ""}`}>
 							<svg viewBox="0 0 800 600">
 								<path
 									d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
@@ -39,9 +39,7 @@ const Header = () => {
 							</svg>
 						</div>
 					</div>
-					<nav
-						className={`header__nav ${active ? "header__nav_active" : null}`}
-					>
+					<nav className={`header__nav ${active ? "header__nav_active" : ""}`}>
 						<ul className="header__list">
 							<li className="header__item">
 								<Link
