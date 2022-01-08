@@ -1,0 +1,28 @@
+.home {
+  &__table {
+    width: 100%;
+    background-color: aquamarine;
+  }
+
+  &__animate {
+    position: relative;
+    animation-name: rush;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-direction: alternate-reverse;
+  }
+}
+
+@keyframes rush {
+  from {
+    left: 0;
+  }
+  50% {
+    left: 50%;
+  }
+  to {
+    left: 100%;
+  }
+}
