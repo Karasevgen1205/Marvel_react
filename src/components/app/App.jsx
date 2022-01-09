@@ -3,6 +3,9 @@ import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import Game from "../appGame/game/Game";
 import AppMarvel from "../appMarvel/appMarvel/AppMarvel";
+import AppHeader from "../appMarvel/appHeader/AppHeader";
+import AppBanner from "../appMarvel/appBanner/AppBanner";
+import ComicsList from "../appMarvel/comicsList/ComicsList";
 import AppEmployeesList from "../appEmployeesList/appEmployeesList/AppEmployeesList";
 import Home from "../appHome/Home";
 import "./app.scss";
@@ -14,13 +17,19 @@ const App = () => {
         <Header />
         <main className="app">
           <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/tic-tac-toe" element={<Game />} />
-            <Route exact path="/marvel" element={<AppMarvel />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/tic-tac-toe" element={<Game />} />
+            <Route path="/marvel" element={<AppMarvel />} />
+            <Route path="/employees-list" element={<AppEmployeesList />} />
             <Route
-              exact
-              path="/employees-list"
-              element={<AppEmployeesList />}
+              path="/marvel-comics"
+              element={
+                <>
+                  <AppHeader />
+                  <AppBanner />
+                  <ComicsList />
+                </>
+              }
             />
           </Routes>
         </main>
