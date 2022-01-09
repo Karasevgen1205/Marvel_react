@@ -6,7 +6,7 @@ import CharInfo from "../charInfo/CharInfo";
 import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 import decoration from "../../../resources/img/vision.png";
-// import "./appMarvel.scss";
+import "./appMarvel.scss";
 
 const AppMarvel = () => {
   const [selectedChar, setSelectedChar] = useState(null);
