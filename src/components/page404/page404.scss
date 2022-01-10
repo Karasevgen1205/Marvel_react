@@ -1,0 +1,49 @@
+.page404 {
+	&__wrapper {
+		position: relative;
+	}
+
+	&__title {
+		position: absolute;
+		z-index: 1;
+		top: 50px;
+		left: 50%;
+		transform: translateX(-50%);
+		font-family: "Arvo", sans-serif;
+		font-size: 80px;
+	}
+
+	&__img {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__content {
+		position: relative;
+		top: -150px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		h2 {
+			margin-bottom: 10px;
+		}
+
+		p {
+			margin-bottom: 60px;
+		}
+
+		a {
+			padding: 10px 25px;
+			border-radius: 25px;
+			color: white;
+			background: #39ac31;
+			transition: color 0.1s linear, background-color 0.1s linear;
+
+			&:hover {
+				color: whitesmoke;
+				background-color: rgb(161, 202, 80);
+			}
+		}
+	}
+}
