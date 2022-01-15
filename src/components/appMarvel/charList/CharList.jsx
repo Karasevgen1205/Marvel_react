@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+// import { CSSTransition, TransitionGroup } from "react-transition-group";
 import useMarvelService from "../../../services/MarvelService";
 
 import Spinner from "../spinner/Spinner";
@@ -56,32 +56,34 @@ const CharList = (props) => {
       }
 
       return (
-        <CSSTransition key={item.id} timeout={500} classNames="char__item">
-          <li
-            className="char__item"
-            tabIndex={0}
-            ref={(el) => (itemRefs.current[i] = el)}
-            onClick={() => {
+        // <CSSTransition key={item.id} timeout={500} classNames="char__item">
+        <li
+          key={item.id}
+          className="char__item"
+          tabIndex={0}
+          ref={(el) => (itemRefs.current[i] = el)}
+          onClick={() => {
+            props.onCharSelected(item.id);
+            focusOnItem(i);
+          }}
+          onKeyPress={(e) => {
+            if (e.key === " " || e.key === "Enter") {
               props.onCharSelected(item.id);
               focusOnItem(i);
-            }}
-            onKeyPress={(e) => {
-              if (e.key === " " || e.key === "Enter") {
-                props.onCharSelected(item.id);
-                focusOnItem(i);
-              }
-            }}
-          >
-            <img src={item.thumbnail} alt={item.name} style={imgStyle} />
-            <div className="char__name">{item.name}</div>
-          </li>
-        </CSSTransition>
+            }
+          }}
+        >
+          <img src={item.thumbnail} alt={item.name} style={imgStyle} />
+          <div className="char__name">{item.name}</div>
+        </li>
+        // </CSSTransition>
       );
     });
 
     return (
       <ul className="char__grid">
-        <TransitionGroup component={null}>{items}</TransitionGroup>
+        {/* <TransitionGroup component={null}>{items}</TransitionGroup> */}
+        {items}
       </ul>
     );
   }
