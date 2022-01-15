@@ -14,40 +14,40 @@ const AppBanner = lazy(() => import("../appMarvel/appBanner/AppBanner"));
 const ComicsList = lazy(() => import("../appMarvel/comicsList/ComicsList"));
 const SingleComic = lazy(() => import("../appMarvel/singleComic/SingleComic"));
 const AppEmployeesList = lazy(() =>
-	import("../appEmployeesList/appEmployeesList/AppEmployeesList")
+  import("../appEmployeesList/appEmployeesList/AppEmployeesList")
 );
 
 const App = () => {
-	return (
-		<Router>
-			<div className="all-works">
-				<Header />
-				<main className="app">
-					<Suspense fallback={<Spinner />}>
-						<Routes>
-							<Route path="/" element={<Home />} />
-							<Route path="/tic-tac-toe" element={<Game />} />
-							<Route path="/marvel" element={<AppMarvel />} />
-							<Route path="/employees-list" element={<AppEmployeesList />} />
-							<Route
-								path="/marvel-comics"
-								element={
-									<>
-										<AppHeader />
-										<AppBanner />
-										<ComicsList />
-									</>
-								}
-							/>
-							<Route path="/marvel-comics/:comicID" element={<SingleComic />} />
-							<Route path="*" element={<Page404 />} />
-						</Routes>
-					</Suspense>
-				</main>
-				<Footer />
-			</div>
-		</Router>
-	);
+  return (
+    <Router>
+      <div className="all-works">
+        <Header />
+        <main className="app">
+          <Suspense fallback={<Spinner />}>
+            <Routes>
+              <Route path="/" element={<Home run={true} />} />
+              <Route path="/tic-tac-toe" element={<Game />} />
+              <Route path="/marvel" element={<AppMarvel />} />
+              <Route path="/employees-list" element={<AppEmployeesList />} />
+              <Route
+                path="/marvel-comics"
+                element={
+                  <>
+                    <AppHeader />
+                    <AppBanner />
+                    <ComicsList />
+                  </>
+                }
+              />
+              <Route path="/marvel-comics/:comicID" element={<SingleComic />} />
+              <Route path="*" element={<Page404 />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
 };
 
 export default App;

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { Transition } from "react-transition-group";
 // import MarvelService from "../../services/MarvelService";
 import cv from "../../resources/img/CV-2021.svg";
 import "./home.scss";
 
-const Home = () => {
+const Home = (props) => {
   // const [data, setData] = useState(null);
   // const [current, setCurrent] = useState("Введите сумму и выберете валюту");
   // const marvelService = new MarvelService();
@@ -43,10 +44,33 @@ const Home = () => {
   //   });
   // }
 
+  const duration = 2;
+
+  const defaultStyle = {
+    transition: `all ${duration}s ease-in-out`,
+    opacity: 0,
+    visibility: "hidden",
+  };
+
+  const transitionStyles = {
+    entering: { opacity: 1, visibility: "visible" },
+    entered: { opacity: 1, visibility: "visible" },
+    exiting: { opacity: 0, visibility: "hidden" },
+    exited: { opacity: 0, visibility: "hidden" },
+  };
+
   return (
-    <div className="home">
-      <div className="container">
-        {/* <div className="">
+    <Transition in={props.run} unmountOnExit>
+      {(state) => (
+        <div
+          className="home"
+          style={{
+            ...defaultStyle,
+            ...transitionStyles[state],
+          }}
+        >
+          <div className="container">
+            {/* <div className="">
           <h1 className="home__animate">Hello</h1>
           <marquee behavior="" direction="">
             Hello Bro!!! Hello Bro!!! Hello Bro!!! Hello Bro!!!
@@ -63,11 +87,13 @@ const Home = () => {
             <tbody>{curs}</tbody>
           </table>
         </div> */}
-        <div className="home__img">
-          <img src={cv} alt="" />
+            <div className="home__img">
+              <img src={cv} alt="" />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </Transition>
   );
 };
 
