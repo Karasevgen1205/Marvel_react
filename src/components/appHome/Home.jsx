@@ -60,7 +60,7 @@ const Home = (props) => {
   };
 
   return (
-    <Transition in={props.run} unmountOnExit>
+    <Transition in={props.run} timeout={duration} unmountOnExit>
       {(state) => (
         <div
           className="home"
