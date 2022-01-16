@@ -42,7 +42,7 @@ const AppHeader = () => {
                           color: isActive ? "#9F0013" : "inherit",
                         };
                       }}
-                      to="/marvel-comics"
+                      to="/comics"
                     >
                       Comics
                     </NavLink>
